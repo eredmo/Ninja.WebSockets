@@ -206,7 +206,7 @@ namespace Ninja.WebSockets
             }
         }
 
-        private Stream GetStream(Guid guid, TcpClient tcpClient, bool isSecure, string host)
+        protected virtual Stream GetStream(Guid guid, TcpClient tcpClient, bool isSecure, string host)
         {
             Stream stream = tcpClient.GetStream();
 
@@ -231,7 +231,7 @@ namespace Ninja.WebSockets
         /// Invoked by the RemoteCertificateValidationDelegate
         /// If you want to ignore certificate errors (for debugging) then return true
         /// </summary>
-        private static bool ValidateServerCertificate(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+        protected static bool ValidateServerCertificate(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
         {
             if (sslPolicyErrors == SslPolicyErrors.None)
             {
